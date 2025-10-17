@@ -80,6 +80,12 @@ DATABASES = {
     }
 }
 
+# Redirect URLs after login/logout
+LOGIN_URL = '/login/'             # If user not logged in, go here
+LOGIN_REDIRECT_URL = '/'          # After successful login
+LOGOUT_REDIRECT_URL = '/login/'   # After logout
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
