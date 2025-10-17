@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Logged Out{% endblock %}
+{% block content %}
+<div class="container mt-5 text-center">
+  <div class="card shadow p-4">
+    <h3>You have been logged out!</h3>
+    <p>Thank you for using the Student CRUD app.</p>
+    <a href="{% url 'login' %}" class="btn btn-primary mt-3">Login Again</a>
+  </div>
+</div>
+{% endblock %}

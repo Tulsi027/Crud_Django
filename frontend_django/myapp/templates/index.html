@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Student CRUD{% endblock %}
+
+{% block content %}
+<div class="container mt-5 p-5 rounded shadow bg-white">
+
+    <!-- Flash messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="mb-3 alert alert-{{ message.tags }} text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Add + Search -->
+    <div class="d-flex mb-3 justify-content-between align-items-center">
+        <a href="" data-bs-toggle="modal" data-bs-target="#addnewstudentModal"
+           class="btn btn-primary px-3 btn-sm">Add new student</a>
+
+        <form method="post" class="d-flex">
+            {% csrf_token %}
+            <input type="search" name="query" class="form-control"
+                   placeholder="search..." value="{{ search_query }}">
+            <button class="btn btn-success btn-sm px-3 mx-2" name="search">Search</button>
+        </form>
+    </div>
+
+    <!-- Student Table -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student Name</th>
+                <th>Student Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+                <tr>
+                    <th>{{ student.id }}</th>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#updatestudentModal_{{ student.id }}"
+                           class="btn btn-sm btn-success"><i class="fa-solid fa-user-pen"></i></a>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#deletestudentModal_{{ student.id }}"
+                           class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+
+                {% include "student/update_modal.html" %}
+                {% include "student/delete_modal.html" %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include "student/add_modal.html" %}
+{% endblock %}
