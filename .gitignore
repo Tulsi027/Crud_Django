@@ -13,6 +13,8 @@ db.sqlite3
 *.log
 media/
 staticfiles/
+*.sqlite3
+*.pyc
 
 # VS Code
 .vscode/
