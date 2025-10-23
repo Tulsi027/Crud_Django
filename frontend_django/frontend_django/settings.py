@@ -69,6 +69,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'frontend_django.wsgi.application'
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+
+
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
